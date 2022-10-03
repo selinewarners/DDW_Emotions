@@ -96,37 +96,37 @@ function draw(){
         }
 
         let emotion = Object.keys(data.output.expressions)[0];
+        let newColor = null;
 
         switch(emotion) {
             case "neutral":
-                for(var i=0; i<organics.length;i++){
-                    organics[i].color = color(255, 255, 255, 30);
-                }
+                newColor = color(255, 255, 255, 30);
               break;
             case "happy":
-                for(var i=0; i<organics.length;i++){
-                    organics[i].color = color(0, 255, 0, 30);
-                }
+                newColor = color(0, 255, 0, 30);
               break;
             case "angry":
-                for(var i=0; i<organics.length;i++){
-                    organics[i].color = color(255, 0, 0, 30);
-                }
+                newColor = color(255, 0, 0, 30);
             break;
             case "disgusted":
-                for(var i=0; i<organics.length;i++){
-                    organics[i].color = color(0, 0, 0, 30);
-                }
+                newColor = color(100, 75, 30, 30);
             break;
             case "surprised":
-                for(var i=0; i<organics.length;i++){
-                    organics[i].color = color(0, 0, 255, 30);
-                }
+                newColor = color(255, 0, 255, 30);
+            break;
+            case "sad":
+                newColor = color(0, 0, 255, 30);
+            break;
+            case "fearful":
+                newColor = color(0, 0, 0, 30);
             break;
             default:
               // code block
-          }
+        }
 
+        let rand = Math.floor(Math.random() * organics.length);
+        organics[rand].color = newColor;
+        
     }
 
     // blob
