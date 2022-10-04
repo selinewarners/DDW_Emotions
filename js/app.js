@@ -74,7 +74,7 @@ function setup(){
               color(30, 100, 30, 30),];
   
     for (var i=0;i<110;i++){
-      organics.push(new Organic(0.1+1*i,width/2,height/2,i*1,i*random(90),colorsPalette[floor(random(3))]));
+      organics.push(new Organic(0.1+1*i,width/2,height/2,i*1,i*random(100),colorsPalette[floor(random(3))]));
     }
     // end blob
 }
@@ -82,7 +82,7 @@ function setup(){
 function draw(){
     data.update();
     background(0);
-    image(data.output.video, 0, 0); //This has no purpose in the data collection- so this could be turned off
+    // image(data.output.video, 0, 0); //This has no purpose in the data collection- so this could be turned off
 
     if(data.output.expressions){
         let count = 0;
@@ -90,7 +90,7 @@ function draw(){
         textSize(32);
         
         // console.log(data.output.expressions);
-        for(let expression in data.output.expressions){ //loop through the data object
+        for(let {} in data.output.expressions){ //loop through the data object
             count++;
             text(Object.keys(data.output.expressions)[count - 1], 50, windowH - (50 * count)); //write object key on the screen
         }
