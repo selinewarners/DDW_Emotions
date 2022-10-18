@@ -146,11 +146,11 @@ function draw() {
     for (let {} in data.output.expressions) {
       //loop through the data object
       count++;
-      text(
-        Object.keys(data.output.expressions)[count - 1],
-        50,
-        windowH - 50 * count
-      ); //write object key on the screen
+      // text(
+      //   Object.keys(data.output.expressions)[count - 1],
+      //   50,
+      //   windowH - 50 * count
+      // ); //write object key on the screen
     }
 
     let emotion = Object.keys(data.output.expressions)[0];
