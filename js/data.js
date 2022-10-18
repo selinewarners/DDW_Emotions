@@ -13,10 +13,8 @@ let followSpeed = 0.2;
 let captureConstraints = {
   video: {
     mandatory: {
-      minWidth: vidW,
-      minHeight: vidH,
-      maxWidth: vidW,
-      maxHeight: vidH,
+      width: vidW,
+      height: vidH,
     },
     optional: [{ maxFrameRate: 20 }],
   },
