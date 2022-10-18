@@ -32,12 +32,10 @@ class Data {
   update() {
     if (this.analysis.loaded) {
       this.output.video.image(this.input.cam, 0, 0);
-      //console.log(this.output.video);
       this.analysis.getDetections(this.output.video);
       if (this.analysis.expressions) {
         this.output.expressions = this.analysis.expressions;
         this.output.faceDimensions = this.analysis.faceDimensions;
-        //console.log(this.output.faceDimensions);
       }
     }
   }
@@ -77,31 +75,50 @@ class Analysis {
       .detectAllFaces(input.canvas)
       .withFaceExpressions();
     this.detections = result;
-    if (this.detections[0]) {
-      this.expressions = this.detections[0].expressions;
+    let closestDetection = null;
+    let biggestSize = 0;
+    for (let i = 0; i < this.detections.length; i++) {
+      let detectionSize =
+        this.detections[i].detection._box._width *
+        this.detections[i].detection._box._height;
+      if (biggestSize < detectionSize) {
+        biggestSize = detectionSize;
+        closestDetection = i;
+      }
+    }
+    if (this.detections[closestDetection]) {
+      this.expressions = this.detections[closestDetection].expressions;
       for (let expression in this.expressions) {
         if (this.expressions[expression] < this.threshold) {
           delete this.expressions[expression];
         }
       }
       if (this.faceDimensions.x == null) {
-        this.faceDimensions.x = this.detections[0].detection._box._x;
-        this.faceDimensions.y = this.detections[0].detection._box._y;
-        this.faceDimensions.w = this.detections[0].detection._box._width;
-        this.faceDimensions.h = this.detections[0].detection._box._height;
+        this.faceDimensions.x =
+          this.detections[closestDetection].detection._box._x;
+        this.faceDimensions.y =
+          this.detections[closestDetection].detection._box._y;
+        this.faceDimensions.w =
+          this.detections[closestDetection].detection._box._width;
+        this.faceDimensions.h =
+          this.detections[closestDetection].detection._box._height;
       } else {
         this.faceDimensions.x +=
           followSpeed *
-          (this.detections[0].detection._box._x - this.faceDimensions.x);
+          (this.detections[closestDetection].detection._box._x -
+            this.faceDimensions.x);
         this.faceDimensions.y +=
           followSpeed *
-          (this.detections[0].detection._box._y - this.faceDimensions.y);
+          (this.detections[closestDetection].detection._box._y -
+            this.faceDimensions.y);
         this.faceDimensions.w +=
           followSpeed *
-          (this.detections[0].detection._box._width - this.faceDimensions.w);
+          (this.detections[closestDetection].detection._box._width -
+            this.faceDimensions.w);
         this.faceDimensions.h +=
           followSpeed *
-          (this.detections[0].detection._box._height - this.faceDimensions.h);
+          (this.detections[closestDetection].detection._box._height -
+            this.faceDimensions.h);
       }
     } else {
       this.faceDimensions.x = null;

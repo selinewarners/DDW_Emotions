@@ -117,14 +117,14 @@ function draw() {
     // console.log(data.output.expressions);
 
     if (data.output.faceDimensions) {
-      noFill();
-      stroke(255, 0, 0);
-      rect(
-        data.output.faceDimensions.x,
-        data.output.faceDimensions.y,
-        data.output.faceDimensions.w,
-        data.output.faceDimensions.h
-      );
+      // noFill();
+      // stroke(255, 0, 0);
+      // rect(
+      //   data.output.faceDimensions.x,
+      //   data.output.faceDimensions.y,
+      //   data.output.faceDimensions.w,
+      //   data.output.faceDimensions.h
+      // );
 
       if (
         data.output.faceDimensions.x > 0 ||
