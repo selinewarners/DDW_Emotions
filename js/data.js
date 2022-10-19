@@ -1,5 +1,5 @@
-let vidW = 1280;
-let vidH = 720;
+let vidW = 1200;
+let vidH = 1280;
 vidW /= 2;
 vidH /= 2;
 
