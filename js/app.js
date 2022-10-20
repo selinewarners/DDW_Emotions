@@ -90,7 +90,7 @@ function setup() {
   //createCanvas(800, 800);
   background(85, 85, 85);
   change = 0;
-  colorsPalette = [color(0, 255, 0), color(50, 200, 50), color(30, 100, 30)];
+  colorsPalette = [color(0, 127, 201), color(253, 98, 70), color(70, 68, 158)];
 
   for (var i = 0; i < 90; i++) {
     organics.push(
@@ -182,6 +182,7 @@ function draw() {
         newColor = color(0, 0, 0);
         break;
       default:
+        newColor = color(0, 127, 201);
       // code block
     }
 
