@@ -1,12 +1,12 @@
-let vidW = 1200;
+let vidW = 1280;
 let vidH = 1280;
 vidW /= 2;
 vidH /= 2;
 
-// fullscreen video
-//vidW = window.innerWidth;
-//vidH = window.innerHeight;
-// end
+//fullscreen video
+vidW = window.innerWidth / 2;
+vidH = window.innerHeight / 2;
+//end
 
 let followSpeed = 0.2;
 

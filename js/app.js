@@ -1,8 +1,8 @@
 let data;
 let windowW = window.innerWidth;
 let windowH = window.innerHeight;
-let drawX = 0;
-let drawY = 0;
+let drawX = window.innerWidth / 4;
+let drawY = window.innerHeight / 4;
 let drawWidth = 0;
 let drawHeight = 0;
 
@@ -46,7 +46,7 @@ class Organic {
       fill(this.color); //color to fill the blob
 
       push(); //we enclose things between push and pop so that all transformations within only affect items within
-      translate(drawX, drawY); //move to xpos, ypos
+      translate(2 * drawX, 2 * drawY); //move to xpos, ypos
       rotate(this.angle + change); //rotate by this.angle+change
       beginShape(); //begin a shape based on the vertex points below
 
@@ -108,7 +108,7 @@ function draw() {
   data.update();
   background(0);
 
-  //  image(data.output.video, 0, 0); //This has no purpose in the data collection- so this could be turned off
+  image(data.output.video, 0, 0); //This has no purpose in the data collection- so this could be turned off
 
   if (data.output.expressions) {
     let count = 0;
