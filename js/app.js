@@ -3,8 +3,8 @@ let windowW = window.innerWidth;
 let windowH = window.innerHeight;
 let drawX = window.innerWidth / 4;
 let drawY = window.innerHeight / 4;
-let drawWidth = 0;
-let drawHeight = 0;
+let drawWidth = 100;
+let drawHeight = 100;
 
 // blob
 
@@ -37,11 +37,13 @@ class Organic {
 
       if (this.fadeIn) {
         this.color.setAlpha(
-          this.alpha < 90 ? (this.alpha += 0.05) : this.alpha
+          this.alpha < 200 ? (this.alpha += 0.5) : this.alpha
         );
       } else {
-        this.color.setAlpha(this.alpha > 0 ? (this.alpha -= 0.05) : this.alpha);
+        this.color.setAlpha(this.alpha > 0 ? (this.alpha -= 0.2) : this.alpha);
       }
+
+      console.log(this.alpha);
 
       fill(this.color); //color to fill the blob
 
@@ -60,7 +62,7 @@ class Organic {
           -this.roughness,
           this.roughness
         );
-        var r = this.radius + 0.1 * drawHeight + offset;
+        var r = this.radius + 0.9 * drawHeight + offset;
         var x = r * cos(i);
         var y = r * sin(i);
         vertex(x, y);
@@ -94,9 +96,9 @@ function setup() {
     organics.push(
       new Organic(
         0.1 + 1 * i,
-        width / 2,
-        height / 2,
-        i * 1, // default is * 1
+        width / 1,
+        height / 1,
+        i * 2, // default is * 1
         i * random(90), // default is 90
         colorsPalette[floor(random(3))]
       )
@@ -139,8 +141,8 @@ function draw() {
         drawWidth = data.output.faceDimensions.w;
         drawHeight = data.output.faceDimensions.h;
 
-        drawX = lerp(drawX, newX, 0.05);
-        drawY = lerp(drawY, newY, 0.05);
+        drawX = lerp(drawX, newX, 0.5);
+        drawY = lerp(drawY, newY, 0.5);
       }
     }
 
@@ -159,22 +161,22 @@ function draw() {
 
     switch (emotion) {
       case "neutral":
-        newColor = color(255, 255, 255);
+        newColor = color(224, 227, 226);
         break;
       case "happy":
-        newColor = color(0, 255, 0);
+        newColor = color(0, 127, 201);
         break;
       case "angry":
-        newColor = color(255, 0, 0);
+        newColor = color(253, 98, 70);
         break;
       case "disgusted":
-        newColor = color(100, 75, 30);
+        newColor = color(195, 237, 45);
         break;
       case "surprised":
-        newColor = color(255, 0, 255);
+        newColor = color(70, 68, 158);
         break;
       case "sad":
-        newColor = color(0, 0, 255);
+        newColor = color(85, 85, 85);
         break;
       case "fearful":
         newColor = color(0, 0, 0);
@@ -198,6 +200,6 @@ function draw() {
 
   //translate(drawX, drawY);
 
-  change += 0.01;
+  change += 0.05;
   // end blob
 }
