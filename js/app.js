@@ -75,6 +75,7 @@ class Organic {
 // end blob
 
 function setup() {
+  frameRate(12);
   pixelDensity(1);
   let canvas = createCanvas(windowW, windowH, P2D);
   canvas.id("p5canvas");
