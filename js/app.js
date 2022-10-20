@@ -88,7 +88,7 @@ function setup() {
 
   // blob
   //createCanvas(800, 800);
-  background(0, 255);
+  background(85, 85, 85);
   change = 0;
   colorsPalette = [color(0, 255, 0), color(50, 200, 50), color(30, 100, 30)];
 
@@ -109,7 +109,7 @@ function setup() {
 
 function draw() {
   data.update();
-  background(0);
+  background(58, 58, 58);
 
   //image(data.output.video, 0, 0); //This has no purpose in the data collection- so this could be turned off
 
