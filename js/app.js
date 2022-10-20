@@ -108,7 +108,7 @@ function draw() {
   data.update();
   background(0);
 
-  image(data.output.video, 0, 0); //This has no purpose in the data collection- so this could be turned off
+  //image(data.output.video, 0, 0); //This has no purpose in the data collection- so this could be turned off
 
   if (data.output.expressions) {
     let count = 0;
